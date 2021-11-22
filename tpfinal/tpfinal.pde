@@ -3,5 +3,5 @@ void setup(){
 }
 
 void draw(){
-  text("hello, it´s me...", width, height);
+
 }
