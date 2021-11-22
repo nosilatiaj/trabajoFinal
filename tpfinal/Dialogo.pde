@@ -1,4 +1,4 @@
-class Dialogo {
+/*class Dialogo {
 //-------Campos------//
 Array String[] dialogos -->para dibujar textos
 Dato indiceDeTexto
@@ -16,6 +16,6 @@ Posición xCuadro, yCuadro
 Color del rect
 
 //------Métodos-----//
-void dibujar(); --> dibuja el texto y la barra del fondo para que se visualice
-void pasarDialogo(); -->crece el índice, pasa el dialogo con condición 
-}
+void dibujar(){} --> dibuja el texto y la barra del fondo para que se visualice
+void pasarDialogo(){} -->crece el índice, pasa el dialogo con condición 
+}*/
