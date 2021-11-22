@@ -1,5 +1,6 @@
 class Pantalla {
-Array PImage[] --> para los fondos
+//Array PImage[] --> para los fondos
+PImage fondos [] = new PImage [83];
 Dato numérico para el número de pantalla
 
 //----Constructor----//
