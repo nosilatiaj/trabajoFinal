@@ -4,13 +4,14 @@ void setup(){
   aventura = new Aventura();
 }
 
-void draw(){
-  
+void draw(){  
 aventura.dibujarAventura();
 }
+
 void mousePressed(){
   aventura.caminoMouse();
 }
+
 void keyPressed(){
   aventura.caminoTecla();
   

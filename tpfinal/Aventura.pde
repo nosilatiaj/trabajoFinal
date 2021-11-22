@@ -1,17 +1,18 @@
 class Aventura {
   PImage pantallas [] = new PImage [83];
   int pantalla;
-  boolean click;
-  Boton botonInicio, botonReinicio, botonCreditos;
+  //boolean click;
+  Boton botonInicio, botonReinicio, botonCreditos, botonMitad;
   Aventura() {
     botonInicio = new Boton ("Iniciar", 200, 530, 170, 90);
     botonCreditos = new Boton ("Créditos", 500, 530, 170, 90);
+    botonReinicio = new Boton ("Reiniciar", 200, 530, 170, 90);
     //Cargar imágenes del fondo
     for (int i=0; i <pantallas.length; i++) {
       pantallas [i] = loadImage("img" + i + ".jpg");
     }
     pantalla = 0;
-    click = false;
+    //click = false;
   }
 
   void dibujarAventura() {
@@ -23,15 +24,40 @@ class Aventura {
       botonEnPantalla();
     }
   }
-  
-  void botonEnPantalla (){
-    if (pantalla == 0){
+
+  void botonEnPantalla () {
+    if (pantalla == 0) {
       botonInicio.actualizar();
+      botonCreditos.actualizar();
+    } else if (pantalla == 36 || pantalla == 80 || pantalla == 81 ) {
+      botonReinicio.actualizar();
       botonCreditos.actualizar();
     }
   }
 
   void caminoMouse() {
+    if (pantalla == 0 && mouseX > 200 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+      pantalla=1;
+    } else if (pantalla == 0 && mouseX > 500 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+      pantalla = 82; //pantalla créditos
+    } else if (pantalla == 36 && mouseX > 200 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+      pantalla = 0; // vuelve de los créditos
+    } else if (pantalla == 36 && mouseX > 500 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+      pantalla = 82;
+    }
+    if (pantalla == 82 && mouseX > 10 && mouseX < 150 && mouseY > 320 && mouseY < 390) {
+      pantalla = 0;
+    } //volver desde la pantalla de créditos
+
+    if (pantalla == 80 || pantalla == 81) {
+      if (mouseX > 200 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+        pantalla = 0;
+      } else if ( mouseX > 500 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+        pantalla = 82;
+      }
+    }
+
+
     if (pantalla == 6 || pantalla == 29) {
       if (mouseX < width/2) {
         actualizarPantalla(pantalla, true);
@@ -40,11 +66,21 @@ class Aventura {
       }
     }
   }
+
   void caminoTecla() {
     if (keyCode ==  RIGHT && pantalla !=6 && pantalla !=0 && pantalla !=36) {
       if (pantalla !=29 && pantalla !=54 && pantalla !=80 && pantalla !=81) {
         actualizarPantalla(pantalla, true);
       }
+    }
+    if (keyCode == 'A' && pantalla == 54) {
+      pantalla = 55;
+    } 
+    if (keyCode == 'B' && pantalla == 54) {
+      pantalla = 62;
+    }
+    if (keyCode == 'C' && pantalla == 54) {
+      pantalla = 74;
     }
   }
 

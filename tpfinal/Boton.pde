@@ -40,6 +40,15 @@ class Boton {
     }
     popStyle();
   } // --> dibuja botones en la pantalla
+
+  void showText(String t, int x){
+    pushStyle();
+    textAlign(CENTER, CENTER);
+    fill (100, 50, 50);
+    text(t,x, height/2);
+    popStyle();
+  }
+
   boolean mouseEncima() {
     if (mouseX > x-ancho/2 && mouseX < x+ancho/2 && mouseY > y-alto/2 && mouseY < y+alto/2 ) {
       return true;
