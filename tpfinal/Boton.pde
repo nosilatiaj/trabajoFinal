@@ -6,6 +6,7 @@ class Boton {
   //Dato color
   //String para dibujar los textos sobre los botones
   String textoBoton;
+  color m = color(67, 53, 92, 30);
 
   //-----Constructor-----//
   Boton(String textoBoton_, int x_, int y_, int ancho_, int  alto_) {
@@ -19,35 +20,36 @@ class Boton {
     textoBoton = textoBoton_;
   }
   //-----Métodos-----//
-  void actualizar() {
-    dibujar();
-  }
-  void dibujar() {
+  //  void actualizar() {
+  //    dibujar();
+  //  }
+  void dibujar(color r, color t) {
     pushStyle();
     rectMode (CENTER);
     textAlign (CENTER, CENTER);
-    fill (0);
+    fill (r);
     rect (x+5, y+5, ancho-10, alto-10, 7);
     textSize (20);
-    fill (255);
+    fill (t);
     text (textoBoton, x, y);
     if (mouseEncima()) {
-      fill (0);
+      fill (r);
       rect (x, y, ancho, alto+5, 7);
       textSize (30);
-      fill (255);
+      fill (t);
       text (textoBoton, x, y-3);
     }
     popStyle();
   } // --> dibuja botones en la pantalla
 
-  void showText(String t, int x){
-    pushStyle();
-    textAlign(CENTER, CENTER);
-    fill (100, 50, 50);
-    text(t,x, height/2);
-    popStyle();
-  }
+  void dibujarBotMitad() {
+      fill(m);
+      noStroke();
+      rect(x, y, ancho, alto);
+      textAlign(CENTER,CENTER);
+      fill(100, 50, 50);
+      text(textoBoton, x+ancho/2, height/2);
+    }
 
   boolean mouseEncima() {
     if (mouseX > x-ancho/2 && mouseX < x+ancho/2 && mouseY > y-alto/2 && mouseY < y+alto/2 ) {

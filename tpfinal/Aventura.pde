@@ -1,12 +1,16 @@
 class Aventura {
   PImage pantallas [] = new PImage [83];
   int pantalla;
-  //boolean click;
-  Boton botonInicio, botonReinicio, botonCreditos, botonMitad;
+  Boton botonInicio, botonReinicio, botonCreditos, botonIzq, botonDer;
+
   Aventura() {
+    colorMode(HSB);
     botonInicio = new Boton ("Iniciar", 200, 530, 170, 90);
     botonCreditos = new Boton ("Créditos", 500, 530, 170, 90);
     botonReinicio = new Boton ("Reiniciar", 200, 530, 170, 90);
+    botonIzq = new Boton ("Consultar", 0, 0, 350, height);
+    botonDer = new Boton ("Esperar", width/2, 0, 350, height);
+
     //Cargar imágenes del fondo
     for (int i=0; i <pantallas.length; i++) {
       pantallas [i] = loadImage("img" + i + ".jpg");
@@ -27,36 +31,50 @@ class Aventura {
 
   void botonEnPantalla () {
     if (pantalla == 0) {
-      botonInicio.actualizar();
-      botonCreditos.actualizar();
+      botonInicio.dibujar(0, 255);
+      botonCreditos.dibujar(0, 255);
     } else if (pantalla == 36 || pantalla == 80 || pantalla == 81 ) {
-      botonReinicio.actualizar();
-      botonCreditos.actualizar();
+      botonReinicio.dibujar(0, 255);
+      botonCreditos.dibujar(0, 255);
+    }
+    if (pantalla == 29) {
+      if (mouseX < width/2) {
+        botonIzq.dibujarBotMitad();
+      } else if (mouseX > width/2) {
+        botonDer.dibujarBotMitad();
+      }
+    }
+  }
+
+  boolean zonaCuadrada (float x1, float x2, float y1, float y2 ) {
+    if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+      return true;
+    } else {
+      return false;
     }
   }
 
   void caminoMouse() {
-    if (pantalla == 0 && mouseX > 200 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+    if (pantalla == 0 && zonaCuadrada(200, 370, 530, 610)) {
       pantalla=1;
-    } else if (pantalla == 0 && mouseX > 500 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+    } else if (pantalla == 0 && zonaCuadrada(500, 370, 530, 610)) {
       pantalla = 82; //pantalla créditos
-    } else if (pantalla == 36 && mouseX > 200 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+    } else if (pantalla == 36 && zonaCuadrada(200, 370, 530, 610)) {
       pantalla = 0; // vuelve de los créditos
-    } else if (pantalla == 36 && mouseX > 500 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+    } else if (pantalla == 36 && zonaCuadrada(500, 370, 530, 610)) {
       pantalla = 82;
     }
-    if (pantalla == 82 && mouseX > 10 && mouseX < 150 && mouseY > 320 && mouseY < 390) {
+    if (pantalla == 82 && zonaCuadrada(10, 150, 320, 390)) {
       pantalla = 0;
     } //volver desde la pantalla de créditos
 
     if (pantalla == 80 || pantalla == 81) {
-      if (mouseX > 200 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+      if (zonaCuadrada(200, 370, 530, 610)) {
         pantalla = 0;
-      } else if ( mouseX > 500 && mouseX < 370 && mouseY > 530 && mouseY < 610) {
+      } else if ( zonaCuadrada(500, 370, 530, 610)) {
         pantalla = 82;
       }
     }
-
 
     if (pantalla == 6 || pantalla == 29) {
       if (mouseX < width/2) {
