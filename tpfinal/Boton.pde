@@ -22,6 +22,7 @@ class Boton {
     textFont(fuenteBotones);
     rectMode (CENTER);
     textAlign (CENTER, CENTER);
+    stroke(#E1EA7B);
     fill (r);
     rect (x+5, y+5, ancho-10, alto-10, 7);
     textSize (25);

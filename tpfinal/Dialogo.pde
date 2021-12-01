@@ -23,7 +23,7 @@ class Dialogo {
     rect(x, y, alto, ancho);
   }
   //------Métodos-----//
-  void dibujar(int x, int y, int ancho, int alto) {
+ /* void dibujar(int x, int y, int ancho, int alto) {
     println("indice " + indiceDeTexto);
     stroke(#E1EA7B);
     fill(#DCED6E, 100);
@@ -33,7 +33,19 @@ class Dialogo {
     fill(100, 20, 250);
     textAlign(CENTER, CENTER);
     text(dialogos[indiceDeTexto], ancho/2, y+alto/2);
-  } //--> dibuja el texto y la barra del fondo para que se visualice
+  }*/ //--> dibuja el texto y la barra del fondo para que se visualice
+
+ void dibujar() {
+    println("indice " + indiceDeTexto);
+    stroke(#E1EA7B);
+    fill(#DCED6E, 100);
+    rect(0, 500, width-1, 100);
+    textFont(fuente);
+    textSize(30);
+    fill(100, 20, 250);
+    textAlign(CENTER, CENTER);
+    text(dialogos[indiceDeTexto], width/2, 550);
+  }
 
   void getIndice(int _indice) {
     indiceDeTexto = _indice;

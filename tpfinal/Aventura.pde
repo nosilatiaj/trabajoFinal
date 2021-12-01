@@ -20,7 +20,7 @@ class Aventura {
   }
 
   void dibujarAventura() {
-    println(pantalla);
+    println("Pantalla " +pantalla);
     for (int i=0; i < pantallas.length; i++) {
       if (pantalla == i) {
         image(pantallas [i], 0, 0, width, height);
@@ -31,7 +31,7 @@ class Aventura {
 
     if (pantalla>0) {
       actualizarDialogos();
-      dialogos.dibujar(0, 500, width-1, 100);
+      // dialogos.dibujar(0, 500, width-1, 100);
     }
   }
 
@@ -119,16 +119,111 @@ class Aventura {
    }*/
 
   void actualizarDialogos() { 
-    //dialogos.dibujar(0, 500, width-1, 100);
     if (pantalla == 1) {
-      dialogos.getIndice(1);
+      dialogos.dibujar();
+      dialogos.getIndice(0);
     } else if (pantalla == 2) {
-      dialogos.getIndice(2);
+      dialogos.dibujar();
+      dialogos.getIndice(1);
     } else if (pantalla == 6) {
+      dialogos.dibujar();
+      dialogos.getIndice(2);
+    } else if (pantalla == 8) {
+      dialogos.dibujar();
+      dialogos.getIndice(4);
+    } else if (pantalla == 13) {
+      dialogos.dibujar();
       dialogos.getIndice(5);
-    } else if (pantalla == 4) {
-      dialogos.getIndice(5);
-    }else{dialogos.getIndice(0);}
+    } else if (pantalla == 14) {
+      dialogos.dibujar();
+      dialogos.getIndice(6);
+    } else if (pantalla == 24) {
+      dialogos.dibujar();
+      dialogos.getIndice(7);
+    } else if (pantalla == 25) {
+      dialogos.dibujar();
+      dialogos.getIndice(8);
+    } else if (pantalla == 28) {
+      dialogos.dibujar();
+      dialogos.getIndice(9);
+    } else if (pantalla == 38) {
+      dialogos.dibujar();
+      dialogos.getIndice(10);
+    } else if (pantalla == 39) {
+      dialogos.dibujar();
+      dialogos.getIndice(11);
+    } else if (pantalla == 41) {
+      dialogos.dibujar();
+      dialogos.getIndice(12);
+    } else if (pantalla == 43) {
+      dialogos.dibujar();
+      dialogos.getIndice(13);
+    } else if (pantalla == 45) {
+      dialogos.dibujar();
+      dialogos.getIndice(14);
+    } else if (pantalla == 48) {
+      dialogos.dibujar();
+      dialogos.getIndice(15);
+    } else if (pantalla == 50) {
+      dialogos.dibujar();
+      dialogos.getIndice(16);
+    } else if (pantalla == 53) {
+      dialogos.dibujar();
+      dialogos.getIndice(17);
+    } else if (pantalla == 54) { // 3 CAMINOS
+      dialogos.dibujar();
+      dialogos.getIndice(18);
+    } else if (pantalla == 55) { // CAMINO A (CONSULTAR)
+      dialogos.dibujar();
+      dialogos.getIndice(19);
+    } else if (pantalla == 57) {
+      dialogos.dibujar();
+      dialogos.getIndice(20);
+    } else if (pantalla == 58) {
+      dialogos.dibujar();
+      dialogos.getIndice(21);
+    } else if (pantalla == 59) {
+      dialogos.dibujar();
+      dialogos.getIndice(22);
+    } else if (pantalla == 60) {
+      dialogos.dibujar();
+      dialogos.getIndice(23);
+    } else if (pantalla == 61) {
+      dialogos.dibujar();
+      dialogos.getIndice(24);
+    } else if (pantalla == 62) { // CAMINO B (AYUDA)
+      dialogos.dibujar();
+      dialogos.getIndice(25);
+    } else if (pantalla == 63) {
+      dialogos.dibujar();
+      dialogos.getIndice(26);
+    } else if (pantalla == 65) {
+      dialogos.dibujar();
+      dialogos.getIndice(27);
+    } else if (pantalla == 67) {
+      dialogos.dibujar();
+      dialogos.getIndice(28);
+    } else if (pantalla == 68) {
+      dialogos.dibujar();
+      dialogos.getIndice(29);
+    } else if (pantalla == 71) {
+      dialogos.dibujar();
+      dialogos.getIndice(30);
+    } else if (pantalla == 73) {
+      dialogos.dibujar();
+      dialogos.getIndice(31);
+    } else if (pantalla == 74) { //CAMINO C (COMER)
+      dialogos.dibujar();
+      dialogos.getIndice(32);
+    } else if (pantalla == 79) {
+      dialogos.dibujar();
+      dialogos.getIndice(33);
+    } 
+    
+    
+    else {
+      dialogos.getIndice(0);
+    }
   }
 
 
