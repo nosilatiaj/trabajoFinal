@@ -2,7 +2,7 @@ class Aventura {
   PImage pantallas [] = new PImage [83];
   int pantalla;
   Boton botonInicio, botonReinicio, botonCreditos, botonIzq, botonDer;
-
+  Dialogo dialogos;
   Aventura() {
     colorMode(HSB);
     botonInicio = new Boton ("Iniciar", 200, 530, 170, 90);
@@ -10,7 +10,7 @@ class Aventura {
     botonReinicio = new Boton ("Reiniciar", 200, 530, 170, 90);
     botonIzq = new Boton ("Consultar", 0, 0, 350, height);
     botonDer = new Boton ("Esperar", width/2, 0, 350, height);
-
+    dialogos = new Dialogo ();
     //Cargar imágenes del fondo
     for (int i=0; i <pantallas.length; i++) {
       pantallas [i] = loadImage("img" + i + ".jpg");
@@ -27,6 +27,7 @@ class Aventura {
       }
       botonEnPantalla();
     }
+    dialogos.dibujar();
   }
 
   void botonEnPantalla () {
@@ -99,6 +100,9 @@ class Aventura {
     }
     if (keyCode == 'C' && pantalla == 54) {
       pantalla = 74;
+    }
+    if (keyCode == RIGHT) {
+      //dialogos.pasarDialogo();
     }
   }
 
