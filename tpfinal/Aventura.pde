@@ -6,7 +6,7 @@ class Aventura {
   Aventura() {
     colorMode(HSB);
     botonInicio = new Boton ("Iniciar", 200, 530, 170, 90);
-    botonCreditos = new Boton ("Créditos", 500, 530, 170, 90);
+    botonCreditos = new Boton ("Creditos", 500, 530, 170, 90);
     botonReinicio = new Boton ("Reiniciar", 200, 530, 170, 90);
     botonIzq = new Boton ("Consultar", 0, 0, 350, height);
     botonDer = new Boton ("Esperar", width/2, 0, 350, height);
@@ -27,7 +27,12 @@ class Aventura {
       }
       botonEnPantalla();
     }
-    dialogos.dibujar();
+    //dialogos.dibujar();
+
+    if (pantalla>0) {
+      actualizarDialogos();
+      dialogos.dibujar(0, 500, width-1, 100);
+    }
   }
 
   void botonEnPantalla () {
@@ -102,9 +107,30 @@ class Aventura {
       pantalla = 74;
     }
     if (keyCode == RIGHT) {
-      //dialogos.pasarDialogo();
+      // dialogos.pasarDialogo();
     }
   }
+  /*void pasarDialogo() {
+   if (pantalla == 1) {
+   dialogos.getIndice(1);
+   } else {
+   //indiceDeTexto = 0;
+   }
+   }*/
+
+  void actualizarDialogos() { 
+    //dialogos.dibujar(0, 500, width-1, 100);
+    if (pantalla == 1) {
+      dialogos.getIndice(1);
+    } else if (pantalla == 2) {
+      dialogos.getIndice(2);
+    } else if (pantalla == 6) {
+      dialogos.getIndice(5);
+    } else if (pantalla == 4) {
+      dialogos.getIndice(5);
+    }else{dialogos.getIndice(0);}
+  }
+
 
   void actualizarPantalla(int _pantalla, boolean camino) {
     println(_pantalla, "Estado nro: " + pantalla);

@@ -6,7 +6,7 @@ class Boton {
   
   Boton(String textoBoton_, int x_, int y_, int ancho_, int  alto_) {
     //posiciones x, y por parámetro
-    fuenteBotones = loadFont ("fuente.vlw");
+    fuenteBotones = loadFont ("SpongeBob.vlw");
     x = x_;
     y = y_;
     ancho = ancho_;
@@ -24,13 +24,13 @@ class Boton {
     textAlign (CENTER, CENTER);
     fill (r);
     rect (x+5, y+5, ancho-10, alto-10, 7);
-    textSize (30);
+    textSize (25);
     fill (t);
     text (textoBoton, x+5, y+5);
     if (mouseEncima()) {
       fill (r);
       rect (x, y, ancho, alto+5, 7);
-      textSize (50);
+      textSize (35);
       fill (t);
       text (textoBoton, x, y-3);
     }
@@ -41,6 +41,8 @@ class Boton {
     fill(m);
     noStroke();
     rect(x, y, ancho, alto);
+    textSize(30);
+    textFont(fuenteBotones);
     textAlign(CENTER, CENTER);
     fill(100, 50, 50);
     text(textoBoton, x+ancho/2, height/2);
