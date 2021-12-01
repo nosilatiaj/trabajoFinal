@@ -15,19 +15,22 @@ class Dialogo {
     fuente = loadFont ("fuente.vlw");
     dialogos = loadStrings("data/texto/dialogos.txt");
     indiceDeTexto = 0;
-    //Posiciones x, y 
-    //Posición xCuadro, yCuadro 
+    //Posiciones x, y
+    //Posición xCuadro, yCuadro
     //Color del rect
   }
-  void dibujarFondo(int x, int y, int ancho, int alto) {
-    rect(x, y, alto, ancho);
-  }
+
+
+
   //------Métodos-----//
   void dibujar(int x, int y, int ancho, int alto) {
     println("indice " + indiceDeTexto);
     stroke(#E1EA7B);
     fill(#DCED6E, 100);
-    rect(x, y, ancho, alto);
+    if (indiceDeTexto!= 0) {
+      rect(x, y, ancho, alto);
+    }
+
     textFont(fuente);
     textSize(30);
     fill(100, 20, 250);
