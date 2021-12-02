@@ -2,7 +2,7 @@ class Tiempo {
   int tiempoInicio;
   int tiempoCant;
   int time;
-  boolean tiempoFinalizado;
+  boolean tiempoFinalizado; //para no tener que llamar a juego se crea boolean para comprobar que finalizo el tiempo 
 
   Tiempo (int tCant) {
     tiempoInicio = millis();
@@ -28,7 +28,7 @@ class Tiempo {
   }
 
   void reiniciar() {
-    tiempoInicio = millis(); //reinicia reloj con el tiempo actual
+    tiempoInicio = millis(); //reinicia reloj con el tiempo actual - por un bug que cuando iniciabas el juego ya estaba empezado
     tiempoFinalizado = false; //reinicia el tiempo finalizado falso porque sino se rompe (si esto no esta al reiniciar el juego luego de jugar, se pierde automaticamente)
    
   }

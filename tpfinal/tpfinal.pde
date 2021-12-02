@@ -1,4 +1,5 @@
 Aventura aventura;
+
 void setup(){
   size(700,600);
   aventura = new Aventura();

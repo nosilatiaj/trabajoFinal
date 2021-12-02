@@ -31,10 +31,10 @@ class Aventura {
       if (pantalla == 6){
         if(juego.camino == 1){
           pantalla = 7;
-          juego.reiniciar();
+          juego.reiniciar(); //si ganas (esta incompleto)
         }
         if(juego.camino == 2){
-          pantalla=8;
+          pantalla=8; //si perdes se reinicia el juego y sigue la aventura
           juego.reiniciar();
         }
       }

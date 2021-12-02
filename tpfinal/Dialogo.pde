@@ -1,23 +1,15 @@
 class Dialogo {
-  //-------Campos------//
+ 
   PFont fuente;
   String[] dialogos;
   int indiceDeTexto;
-  /*Dato posición x, y (para el texto)
-   Dato posición xCuadro, yCuadro (para el rect detrás del texto)
-   Dato color del texto
-   Dato tamaño del texto
-   Dato color del rect*/
-
-  //-----Constructor-----//
+  
   Dialogo() {
     //carga de dialogos
     fuente = loadFont ("fuente.vlw");
     dialogos = loadStrings("data/texto/dialogos.txt");
     indiceDeTexto = 0;
-    //Posiciones x, y
-    //Posición xCuadro, yCuadro
-    //Color del rect
+   
   }
 
  void dibujar() {
@@ -31,7 +23,7 @@ class Dialogo {
     text(dialogos[indiceDeTexto], width/2, 550);
   }
 
-  void getIndice(int _indice) {
+  void getIndice(int _indice) { //set indice 
     indiceDeTexto = _indice;
     //dibujar(0, 500, width-1, 100);
   }
@@ -40,11 +32,5 @@ class Dialogo {
     return indiceDeTexto;
   }
 
-  /* void pasarDialogo() {
-   if (indiceDeTexto < dialogos.length-1) {
-   indiceDeTexto++;
-   } else {
-   indiceDeTexto = 0;
-   }
-   }*/  ///-->crece el índice, pasa el dialogo con condición
+  
 }

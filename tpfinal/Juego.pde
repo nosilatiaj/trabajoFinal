@@ -40,7 +40,7 @@ class Juego {
     if (pantalla == 1) {
       tiempo.start(); //inicia el reloj en la pantalla 1
 
-      if (tiempo.tiempoFinalizado) { //si es verdadero perdiste y vas a pantalla 3
+      if (tiempo.tiempoFinalizado) { //si es verdadero perdiste y vas a pantalla 3. 
         pantalla = 3;
       }
 
@@ -120,7 +120,7 @@ class Juego {
         reiniciar();
       } if (botonSeguir.mouseEncima()) {
         
-        if (pantalla == 2) {
+        if (pantalla == 2) { //camino p ganar no esta hecho
           reiniciar();
         } else {
           camino=2;
