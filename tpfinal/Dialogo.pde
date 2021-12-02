@@ -21,7 +21,6 @@ class Dialogo {
   }
 
  void dibujar() {
-    println("indice " + indiceDeTexto);
     stroke(#E1EA7B);
     fill(#DCED6E, 100);
     rect(0, 500, width-1, 100);

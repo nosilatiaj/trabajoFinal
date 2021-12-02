@@ -1,8 +1,8 @@
-class Boton {
+class BotonJuego {
   int x, y, ancho, alto;
   String textoBoton;
 
-  Boton(String textoBoton_, int x_, int y_, int ancho_, int alto_) {
+  BotonJuego(String textoBoton_, int x_, int y_, int ancho_, int alto_) {
     textoBoton = textoBoton_;
     x = x_;
     y = y_;

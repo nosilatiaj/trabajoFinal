@@ -4,8 +4,8 @@ class Basura {
   int tamBasura;
 
   Basura() {
-    clip = loadImage("Basura1.png");
-    papel = loadImage("Basura2.png");
+    clip = loadImage("juego\\Basura1.png");
+    papel = loadImage("juego\\Basura2.png");
     posXP = random (30, width-50);
     posYP = random (30, height-50);
     posXC = random (35, width-50);

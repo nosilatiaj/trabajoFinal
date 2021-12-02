@@ -6,13 +6,14 @@ class Moneda {
   boolean recolectada; 
 
   Moneda () {
-    monedaOriginal=loadImage("moneda.png");
-    monedaFalsa=loadImage("monedasFalsas.png");
+    monedaOriginal=loadImage("juego\\moneda.png");
+    monedaFalsa=loadImage("juego\\monedasFalsas.png");
     posXM = random(30, width-50);
     posYM = random(30, height-50);
     posXF = random(30, width-50);
     posYF = random(30, height-50);
     tamMoneda = random (20, 40);
+    recolectada = false;
   }
 
   void dibujarOriginales() {

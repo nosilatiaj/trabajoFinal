@@ -4,12 +4,21 @@ void setup(){
   aventura = new Aventura();
 }
 
-void draw(){  
-aventura.dibujarAventura();
+void draw(){
+  if (aventura.juego.jugando){
+    background(#9B6F2D);
+    aventura.juego.dibujarJuego();
+  }
+  else{
+    aventura.dibujarAventura();
+  }
 }
 
 void mousePressed(){
   aventura.caminoMouse();
+  aventura.juego.clickear();
+  aventura.juego.recolectarMonedas();
+  aventura.juego.recolectarMonedasFalsas();
 }
 
 void keyPressed(){

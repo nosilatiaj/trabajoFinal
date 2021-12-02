@@ -1,50 +1,57 @@
 class Juego {
   PImage inicio, ganar, perder;
   int pantalla, contador;
-  String estado;
   int cantBasura = 35;
   int cantMonedas = 15;
   color cInicio = color (#F7EC02);
   color cGanar = color (0, 255, 0);
   color cPerder = color (255, 0, 0);
-  Tiempo tiempo;
+  Tiempo tiempo; //en vez de declarar el objeto en tp5 lo hacemos adentro de Juego
   Moneda moneda;
-  Boton botonInicio, botonVolver, botonSeguir;
+  BotonJuego botonInicio, botonVolver, botonSeguir;
   Basura[] basura = new Basura [cantBasura];
   Moneda[] monedasOriginales = new Moneda [cantMonedas];
   Moneda[] monedasFalsas = new Moneda [cantMonedas];
+  int camino;
+  boolean jugando;
 
   Juego () {
-    tiempo = new Tiempo(10);
-    botonInicio = new Boton ("Iniciar", width/2, 530, 170, 90);
-    botonVolver = new Boton ("Volver", 200, 530, 170, 90);
-    botonSeguir = new Boton ("Seguir", 500, 530, 170, 90);
+    botonInicio = new BotonJuego ("Iniciar", width/2, 530, 170, 90);
+    botonVolver = new BotonJuego ("Volver", 200, 530, 170, 90);
+    botonSeguir = new BotonJuego ("Seguir", 500, 530, 170, 90);
     moneda = new Moneda();
+    tiempo = new Tiempo(11);
     for (int i=0; i<basura.length; i++) {
       basura[i] = new Basura ();
     }
     for (int i=0; i<monedasOriginales.length; i++) {
-      for (int j=0; j<monedasFalsas.length; j++) {
-        monedasOriginales[i] = new Moneda();
-        monedasFalsas[i] = new Moneda();
-      }
+      monedasOriginales[i] = new Moneda();
+      monedasFalsas[i] = new Moneda();
     }
-    inicio=loadImage("img0.jpg");
-    ganar=loadImage("img2.jpg");
-    perder=loadImage("img1.jpg");
+    inicio=loadImage("juego\\img0.jpg");
+    ganar=loadImage("juego\\img2.jpg");
+    perder=loadImage("juego\\img1.jpg");
+    jugando = false;
+    camino = 0;
   }
 
   void dibujarJuego() {
-    println(pantalla);
-    if (pantalla == 7) {
+
+    if (pantalla == 1) {
+      tiempo.start(); //inicia el reloj en la pantalla 1
+
+      if (tiempo.tiempoFinalizado) { //si es verdadero perdiste y vas a pantalla 3
+        pantalla = 3;
+      }
+
       for (int i=0; i<basura.length; i++) {
         basura[i].dibujar();
       }
+
+      //for anidado monedafalsa (j) no era necesario con un for se peude crear moneerroi
       for (int i=0; i<monedasOriginales.length; i++) {
-        for (int j=0; j<monedasFalsas.length; j++) {
-          monedasOriginales[i].dibujarOriginales();
-          monedasFalsas[i].dibujarFalsas();
-        }
+        monedasOriginales[i].dibujarOriginales();
+        monedasFalsas[i].dibujarFalsas();
       }
     }
     fill(cInicio);
@@ -54,13 +61,12 @@ class Juego {
     text("Monedas  " + contador + "  /50", 580, 35);
     dibujarPantalla();
     actualizarPantalla();
-    tiempo.start();
   }
+
 
   void cambiarAPantalla(int _pantalla) {
     pantalla = _pantalla;
   }
-
 
   int getPantalla() {
     return pantalla;
@@ -80,19 +86,19 @@ class Juego {
     if (pantalla == 0) {
       image(inicio, 0, 0, width, height);
       dibujarFondoTexto("Recolecta las monedas a tiempo para volver a casa", cInicio );
-      botonInicio.dibujar(0, 255);
-    } 
+      botonInicio.actualizar();
+    }
     if (pantalla == 2) {
       image(ganar, 0, 0, width, height);
       dibujarFondoTexto("Lo lograste, buen viaje", cGanar);
-      botonVolver.dibujar(0, 255);
-      botonSeguir.dibujar(0, 255);
+      botonVolver.actualizar();
+      botonSeguir.actualizar();
     }
     if (pantalla == 3) {
       image(perder, 0, 0, width, height);
       dibujarFondoTexto("No recolectaste las monedas a tiempo", cPerder);
-      botonVolver.dibujar(0, 255);
-      botonSeguir.dibujar(0, 255);
+      botonVolver.actualizar();
+      botonSeguir.actualizar();
     }
   }
 
@@ -105,14 +111,22 @@ class Juego {
   void clickear() {
     if (pantalla == 0) {
       if (botonInicio.mouseEncima()) {
+        tiempo.reiniciar(); //reinicia el reloj cuando apretas iniciar 
         pantalla = 1;
       }
     }
     if (pantalla == 2 || pantalla == 3) {
       if (botonVolver.mouseEncima()) {
         reiniciar();
-      } else if (botonSeguir.mouseEncima()) {
-        //pantalla siguiente de la aventura
+      } if (botonSeguir.mouseEncima()) {
+        
+        if (pantalla == 2) {
+          camino = 1;
+          jugando=false;
+        } else {
+          camino=2;
+          jugando=false;
+        }
       }
     }
   }
@@ -144,5 +158,15 @@ class Juego {
   void reiniciar() {
     contador=0;
     pantalla=0;
+    jugando = false;
+    camino = 0;
+    //volvemos a crear loso bjetos para eivtar bug de reinicio
+    for (int i=0; i<monedasOriginales.length; i++) {
+      monedasOriginales[i] = new Moneda();
+      monedasFalsas[i] = new Moneda();
+    }
+    for (int i=0; i<basura.length; i++) {
+      basura[i] = new Basura ();
+    }
   }
 }
