@@ -121,8 +121,7 @@ class Juego {
       } if (botonSeguir.mouseEncima()) {
         
         if (pantalla == 2) {
-          camino = 1;
-          jugando=false;
+          reiniciar();
         } else {
           camino=2;
           jugando=false;
