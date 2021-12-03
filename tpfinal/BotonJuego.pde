@@ -1,8 +1,9 @@
 class BotonJuego {
   int x, y, ancho, alto;
   String textoBoton;
-
+  PFont fuenteBotones;
   BotonJuego(String textoBoton_, int x_, int y_, int ancho_, int alto_) {
+    fuenteBotones = loadFont ("SpongeBob.vlw");
     textoBoton = textoBoton_;
     x = x_;
     y = y_;
@@ -16,17 +17,18 @@ class BotonJuego {
 
   void dibujar() {
     pushStyle();
+    textFont(fuenteBotones);
     rectMode(CENTER);
-    textAlign(CENTER,CENTER);
+    textAlign(CENTER, CENTER);
     fill(0);
     rect(x+5, y+5, ancho-10, alto-10, 7);
-    textSize(20);
+    textSize(25);
     fill(255);
-    text(textoBoton, x, y);
+    text(textoBoton, x+5, y+5);
     if (mouseEncima()) {
       fill(0);
       rect(x, y, ancho, alto+5, 7);
-      textSize(30);
+      textSize(35);
       fill(255);
       text(textoBoton, x, y-3);
     }

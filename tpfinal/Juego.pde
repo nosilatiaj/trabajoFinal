@@ -73,13 +73,15 @@ class Juego {
   }
 
   void dibujarFondoTexto(String t, color c) {
+    pushStyle();
     noStroke();
     fill(c);
     rect(0, 0, width, 40);
     textAlign(CENTER);
-    fill(0);
-    textSize(20);
-    text(t, width/2, 25);
+    fill(255);
+    textSize(27);
+    text(t, width/2, 27);
+    popStyle();
   }
 
   void dibujarPantalla() {

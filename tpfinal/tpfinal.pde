@@ -1,28 +1,20 @@
 Aventura aventura;
-
-void setup(){
-  size(700,600);
+void setup() {
+  size(700, 600);
   aventura = new Aventura();
 }
 
-void draw(){
-  if (aventura.juego.jugando){
-    background(#9B6F2D);
-    aventura.juego.dibujarJuego();
-  }
-  else{
-    aventura.dibujarAventura();
-  }
+void draw() {  
+  aventura.dibujarAventura();
 }
 
-void mousePressed(){
+void mousePressed() {
   aventura.caminoMouse();
   aventura.juego.clickear();
   aventura.juego.recolectarMonedas();
   aventura.juego.recolectarMonedasFalsas();
 }
 
-void keyPressed(){
+void keyPressed() {
   aventura.caminoTecla();
-  
 }
